@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>АКПП 57 — ремонт и обслуживание АКПП в пгт Знаменка, Орловская область</title>
+  <meta name="description" content="Ремонт и обслуживание автоматических коробок передач в пгт Знаменка, Орловская область. ул. Советская, 115В. Работаем с 9:00 до 16:00.">
+  <meta name="theme-color" content="#0b0b0d">
+
+  <!-- Помечаем, что JS работает: без JS интро-экран не показывается -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Шрифты: Oswald (заголовки) + Inter (текст). Оба поддерживают кириллицу -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!--
+    ВАЖНО: телефон, Telegram и Max подставляются во ВСЕ кнопки и ссылки скриптом script.js
+    из блока CONFIG (в самом начале файла). Менять контакты нужно ТАМ: значения,
+    написанные прямо в HTML, при загрузке страницы перезаписываются значениями из CONFIG.
+  -->
+
+  <!--
+    ЯНДЕКС.МЕТРИКА и ЯНДЕКС.КАРТЫ подключаются из script.js ТОЛЬКО после того,
+    как посетитель нажал «Принять» в плашке cookie. Вставлять код счётчика сюда не нужно:
+    достаточно указать ID в script.js → CONFIG.metrikaId.
+    Цели "call", "telegram" и "max" отправляются по атрибутам data-goal.
+  -->
+</head>
+
+<body class="is-loading">
+
+  <!-- ====================== SVG-СПРАЙТ: ЛОГОТИП ======================
+       Временный логотип (шестерня). Когда заказчик пришлёт фото коробки
+       передач — заменить содержимое <symbol id="logo-mark"> на обведённый контур. -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="logo-mark" viewBox="0 0 64 64">
+      <circle class="logo-teeth" cx="32" cy="32" r="26" fill="none" stroke="currentColor" stroke-width="8" stroke-dasharray="8.17 8.17"/>
+      <circle class="logo-ring"  cx="32" cy="32" r="21" fill="none" stroke="currentColor" stroke-width="3"/>
+      <circle class="logo-hub"   cx="32" cy="32" r="8"  fill="none" stroke="currentColor" stroke-width="3"/>
+      <path class="logo-spokes" d="M32 24V11M32 40v13M24 32H11M40 32h13" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+    </symbol>
+
+    <!-- Иконки кнопок связи (обводка берётся из CSS: класс .icon) -->
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M21.5 3 2.5 10.3l6 2.2 2.3 7 3.2-4.2 4.8 3.6L21.5 3Z"/><path d="m8.5 12.5 9-6"/></symbol>
+    <symbol id="i-max" viewBox="0 0 24 24"><path d="M3 21l1.7-5A9 9 0 1 1 8 19.3L3 21Z"/><path d="M8.3 15V9.2l3.7 3.9 3.7-3.9V15"/></symbol>
+  </svg>
+
+  <!-- ====================== ИНТРО-ЭКРАН ====================== -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro__logo">
+      <svg class="intro__mark" width="84" height="84"><use href="#logo-mark"/></svg>
+      <span class="intro__name">АКПП <b>57</b></span>
+    </div>
+  </div>
+
+  <!-- ====================== ШАПКА ====================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#hero" class="logo" aria-label="АКПП 57 — на главную">
+        <svg class="logo__mark" width="38" height="38"><use href="#logo-mark"/></svg>
+        <span class="logo__text">АКПП <b>57</b></span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Основное меню">
+        <a href="#about">О нас</a>
+        <a href="#services">Ремонт АКПП</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#contacts">Контакты</a>
+        <a href="#legal">Документы</a>
+      </nav>
+
+      <!-- Кнопки связи в шапке (на узких экранах остаются только иконки) -->
+      <div class="header__actions">
+        <a class="btn btn--small" href="tel:+79107481241" data-phone data-goal="call" aria-label="Позвонить" title="Позвонить">
+          <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span class="btn__label">Позвонить</span>
+        </a>
+        <a class="btn btn--small btn--ghost" href="https://t.me/akpp_57" target="_blank" rel="noopener" data-telegram data-goal="telegram" aria-label="Написать в Telegram" title="Написать в Telegram">
+          <svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg><span class="btn__label">Telegram</span>
+        </a>
+        <a class="btn btn--small btn--ghost" href="https://max.ru/79107481241" target="_blank" rel="noopener" data-max data-goal="max" aria-label="Написать в Max" title="Написать в Max">
+          <svg class="icon" aria-hidden="true"><use href="#i-max"/></svg><span class="btn__label">Max</span>
+        </a>
+      </div>
+
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ====================== 1. ГЛАВНЫЙ ЭКРАН ====================== -->
+    <section class="hero" id="hero">
+      <!-- Декоративная шестерня на фоне -->
+      <svg class="hero__gear" viewBox="0 0 64 64" aria-hidden="true"><use href="#logo-mark"/></svg>
+
+      <div class="container hero__inner">
+        <p class="eyebrow reveal">Ремонт и обслуживание АКПП</p>
+        <h1 class="hero__title reveal">Коробка снова <span class="accent">переключается</span> как новая</h1>
+        <p class="hero__text reveal">
+          Диагностика, обслуживание и ремонт автоматических коробок передач
+          в пгт Знаменка.
+        </p>
+        <div class="hero__actions reveal">
+          <a class="btn" href="tel:+79107481241" data-phone data-goal="call">
+            <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+            Позвонить
+          </a>
+          <a class="btn btn--ghost" href="https://t.me/akpp_57" target="_blank" rel="noopener" data-telegram data-goal="telegram">
+            <svg class="icon" aria-hidden="true"><use href="#i-telegram"/></svg>
+            Написать в Telegram
+          </a>
+          <a class="btn btn--ghost" href="https://max.ru/79107481241" target="_blank" rel="noopener" data-max data-goal="max">
+            <svg class="icon" aria-hidden="true"><use href="#i-max"/></svg>
+            Написать в Max
+          </a>
+        </div>
+        <ul class="hero__facts reveal">
+          <li><b>9:00–16:00</b><span>график работы</span></li>
+          <li><b>Знаменка</b><span>Орловская область</span></li>
+          <li><b>АКПП</b><span>наша специализация</span></li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- ====================== 2. О НАС ====================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">О нас</p>
+          <h2 class="section__title">Занимаемся только автоматическими коробками</h2>
+        </header>
+
+        <!-- Две колонки: слева текст, справа карточки.
+             Верх первой карточки выровнен по первой строке текста (см. .about__list в style.css) -->
+        <div class="about">
+          <div class="about__text reveal">
+            <!-- Текст раздела «О нас». Абзац — <p>, подзаголовок — <h3>, пункты списка — <li>.
+                 Чтобы добавить пункт, скопируйте целиком одну строку <li>…</li>. -->
+            <p>
+              Автоматическая коробка передач — один из самых сложных узлов автомобиля, который не прощает
+              дилетантского подхода. В сервисе «АКПП 57» мы объединили узкую специализацию, многолетний опыт
+              (работаем с 2008 года!) и современное диагностическое оборудование, чтобы возвращать вашим
+              автомобилям плавность хода и уверенность на дороге.
+            </p>
+
+            <h3 class="about__subtitle">Почему автовладельцы доверяют нам:</h3>
+            <ul class="about__points">
+              <li><b>Команда узких специалистов.</b> Наши мастера знают конструктивные особенности и «болезни» классических автоматов, вариаторов и роботизированных коробок различных марок.</li>
+              <li><b>Точная диагностика.</b> Перед началом работы находим истинную причину неисправности с помощью профессионального оборудования и только потом согласовываем с вами смету.</li>
+              <li><b>Честность и прозрачность.</b> Вы всегда знаете, за что платите: мы подробно объясняем суть поломки, показываем изношенные узлы и фиксируем стоимость работ до их начала.</li>
+              <li><b>Гарантия качества.</b> Используем проверенные комплектующие и расходные материалы, отвечая за результат своей работы.</li>
+            </ul>
+          </div>
+
+          <div class="about__side">
+            <ul class="about__list">
+              <!-- ПРЕИМУЩЕСТВА-ЗАГЛУШКИ: заменить на реальные -->
+              <li class="card reveal">
+                <span class="card__num">01</span>
+                <h3>Узкая специализация</h3>
+                <p>Работаем только с АКПП — знаем типовые поломки и их причины.</p>
+              </li>
+              <li class="card reveal">
+                <span class="card__num">02</span>
+                <h3>Понятная цена</h3>
+                <p>Называем стоимость после диагностики и до начала ремонта.</p>
+              </li>
+              <li class="card reveal">
+                <span class="card__num">03</span>
+                <h3>Аккуратная работа</h3>
+                <p>Разборка, дефектовка, сборка и проверка — всё выполняем профессионально.</p>
+              </li>
+            </ul>
+
+            <p class="about__outro reveal">Доверьте трансмиссию своего автомобиля профессионалам с опытом. В «АКПП 57» ваш автомобиль в надёжных руках!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== 3. РЕМОНТ АКПП ====================== -->
+    <section class="section section--alt" id="services">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Услуги и цены</p>
+          <h2 class="section__title">Ремонт АКПП</h2>
+        </header>
+
+        <!--
+          ПЕРЕЧЕНЬ УСЛУГ И ЦЕНЫ — ПРИМЕР.
+          Заказчик предоставит базовый список. Чтобы добавить услугу —
+          скопировать один блок <li class="price__row"> и поменять текст.
+        -->
+        <ul class="price">
+          <li class="price__row reveal">
+            <div><h3>Компьютерная диагностика АКПП</h3><p>Считывание ошибок, проверка давления и работы блока управления</p></div>
+            <span class="price__cost"></span>
+          </li>
+          <li class="price__row reveal">
+            <div><h3>Замена масла и фильтра</h3><p>Частичная или полная замена, подбор масла под вашу коробку</p></div>
+            <span class="price__cost"></span>
+          </li>
+          <li class="price__row reveal">
+            <div><h3>Ремонт гидроблока</h3><p>Чистка, дефектовка, замена соленоидов и изношенных деталей</p></div>
+            <span class="price__cost"></span>
+          </li>
+          <li class="price__row reveal">
+            <div><h3>Ремонт гидротрансформатора</h3><p>Проверка, восстановление или замена</p></div>
+            <span class="price__cost"></span>
+          </li>
+          <li class="price__row reveal">
+            <div><h3>Замена фрикционов и сальников</h3><p>Снятие, разборка, замена комплекта, сборка и обкатка</p></div>
+            <span class="price__cost"></span>
+          </li>
+          <li class="price__row reveal">
+            <div><h3>Капитальный ремонт АКПП</h3><p>Полная разборка, дефектовка и восстановление узлов</p></div>
+            <span class="price__cost"></span>
+          </li>
+        </ul>
+
+        <p class="price__note reveal">
+          Стоимость называем после диагностики —
+          <a href="#contacts">свяжитесь с нами</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ====================== 4. ГАЛЕРЕЯ ====================== -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Галерея</p>
+          <h2 class="section__title">Наши работы</h2>
+        </header>
+
+        <!-- Сетка заполняется скриптом из списка GALLERY_PHOTOS (script.js) -->
+        <div class="gallery" id="gallery-grid"></div>
+      </div>
+    </section>
+
+    <!-- ====================== 5. КОНТАКТЫ ====================== -->
+    <section class="section section--alt" id="contacts">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Контакты</p>
+          <h2 class="section__title">Как нас найти</h2>
+        </header>
+
+        <div class="contacts">
+          <div class="contacts__info reveal">
+            <dl class="contacts__list">
+              <div>
+                <dt>Адрес</dt>
+                <dd>Орловская область, пгт Знаменка,<br>ул. Советская, 115В</dd>
+              </div>
+              <div>
+                <dt>График работы</dt>
+                <dd>9:00–16:00</dd>
+                <!-- Дни недели не указаны в задании — уточнить у заказчика -->
+              </div>
+              <div>
+                <dt>Телефон</dt>
+                <dd><a href="tel:+79107481241" data-phone data-phone-text data-goal="call">+7 (910) 748-12-41</a></dd>
+              </div>
+              <div>
+                <dt>Telegram</dt>
+                <dd><a href="https://t.me/akpp_57" target="_blank" rel="noopener" data-telegram data-telegram-text data-goal="telegram">@akpp_57</a></dd>
+              </div>
+              <div>
+                <dt>Max</dt>
+                <dd><a href="https://max.ru/79107481241" target="_blank" rel="noopener" data-max data-max-text data-goal="max">+7 (910) 748-12-41</a></dd>
+              </div>
+            </dl>
+
+            <div class="contacts__actions">
+              <a class="btn" href="tel:+79107481241" data-phone data-goal="call">Позвонить</a>
+              <a class="btn btn--ghost" href="https://t.me/akpp_57" target="_blank" rel="noopener" data-telegram data-goal="telegram">Написать в Telegram</a>
+              <a class="btn btn--ghost" href="https://max.ru/79107481241" target="_blank" rel="noopener" data-max data-goal="max">Написать в Max</a>
+            </div>
+
+            <a class="route-link" target="_blank" rel="noopener"
+               href="https://yandex.ru/maps/?ll=35.980859%2C52.902466&amp;mode=routes&amp;rtext=~52.902769%2C35.980877&amp;rtt=auto&amp;ruri=~ymapsbm1%3A%2F%2Forg%3Foid%3D2260700605&amp;utm_source=share&amp;z=20">
+              Построить маршрут в Яндекс.Картах →
+            </a>
+          </div>
+
+          <!-- Карта по координатам организации (52.902769, 35.980877) с красной меткой.
+               Координаты взяты из ссылки https://yandex.ru/maps/-/CXcizSOi -->
+          <div class="contacts__map reveal">
+            <!-- Заглушка: показывается, пока нет согласия на cookie -->
+            <div class="map-stub" id="map-stub">
+              <svg class="icon map-stub__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              <p>Карта загружается с серверов Яндекса и использует cookie.<br>Чтобы показать её на сайте, примите cookie.</p>
+              <div class="map-stub__actions">
+                <button type="button" class="btn btn--small" data-cookie-accept>Принять и показать карту</button>
+                <a class="btn btn--small btn--ghost" target="_blank" rel="noopener" href="https://yandex.ru/maps/-/CXcizSOi">Открыть в Яндекс.Картах</a>
+              </div>
+            </div>
+            <!-- Адрес карты лежит в data-src: script.js подставит его в src после согласия -->
+            <iframe id="map-frame" hidden
+              title="Карта проезда: пгт Знаменка, ул. Советская, 115В"
+              data-src="https://yandex.ru/map-widget/v1/?ll=35.980877%2C52.902769&amp;z=18&amp;pt=35.980877%2C52.902769%2Cpm2rdm"
+              loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== 6. ЮРИДИЧЕСКАЯ ИНФОРМАЦИЯ ====================== -->
+    <section class="section" id="legal">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Юридическая информация</p>
+          <h2 class="section__title">Документы</h2>
+        </header>
+
+        <div class="legal reveal">
+          <button class="legal__item" type="button" data-modal="modal-privacy">
+            <span>Политика конфиденциальности</span><i aria-hidden="true">→</i>
+          </button>
+          <button class="legal__item" type="button" data-modal="modal-consent">
+            <span>Согласие на обработку персональных данных</span><i aria-hidden="true">→</i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================== ПОДВАЛ ====================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#hero" class="logo logo--footer" aria-label="Наверх">
+        <svg class="logo__mark" width="30" height="30"><use href="#logo-mark"/></svg>
+        <span class="logo__text">АКПП <b>57</b></span>
+      </a>
+      <p class="footer__copy">© <span id="year">2026</span> АКПП 57. Ремонт и обслуживание АКПП, пгт Знаменка.</p>
+      <p class="footer__links">
+        <button type="button" data-modal="modal-privacy">Политика конфиденциальности</button>
+        <button type="button" data-modal="modal-consent">Согласие на обработку данных</button>
+        <button type="button" data-cookie-settings>Настройки cookie</button>
+      </p>
+      <p class="footer__sign">подпись (позже)</p>
+    </div>
+  </footer>
+
+  <!-- ====================== ЛАЙТБОКС ГАЛЕРЕИ ====================== -->
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Просмотр фотографии">
+    <button class="lightbox__close" type="button" id="lb-close" aria-label="Закрыть">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" id="lb-prev" aria-label="Предыдущее фото">‹</button>
+    <figure class="lightbox__figure">
+      <img id="lb-img" src="" alt="">
+      <figcaption id="lb-caption"></figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" type="button" id="lb-next" aria-label="Следующее фото">›</button>
+  </div>
+
+  <!-- ====================== МОДАЛЬНЫЕ ОКНА: ЮРИДИЧЕСКИЕ ТЕКСТЫ ======================
+       Тексты — типовые, сгенерированные. Реквизиты в [квадратных скобках]
+       заменить данными владельца (ИП / ООО), перед публикацией показать юристу. -->
+  <dialog class="modal" id="modal-privacy" aria-labelledby="privacy-title">
+    <div class="modal__box">
+      <button class="modal__close" type="button" data-close aria-label="Закрыть">×</button>
+      <h2 id="privacy-title">Политика конфиденциальности</h2>
+      <div class="modal__body">
+        <p><i>Редакция от 20.11.2026</i></p>
+
+        <h3>1. Общие положения</h3>
+        <p>Настоящая политика определяет порядок обработки и защиты персональных данных посетителей сайта «АКПП 57» (далее — Сайт) в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+        <p>Оператор персональных данных: [ФИО / наименование ИП или ООО], ИНН [____], адрес: Орловская область, пгт Знаменка, ул. Советская, 115В, e-mail: [e-mail].</p>
+
+        <h3>2. Какие данные мы получаем</h3>
+        <p>При обращении по телефону или через Telegram мы можем получить ваше имя, номер телефона, имя пользователя в Telegram и сведения об автомобиле, которые вы сообщаете добровольно. Также Сайт автоматически собирает технические данные: IP-адрес, тип браузера и устройства, страницы, которые вы просматривали, — с помощью сервиса «Яндекс.Метрика» и файлов cookie.</p>
+
+        <h3>3. Цели обработки</h3>
+        <p>Связь с вами по вашему обращению, запись на диагностику и ремонт, консультации, улучшение работы Сайта и оценка эффективности рекламы.</p>
+
+        <h3>4. Передача третьим лицам</h3>
+        <p>Мы не продаём и не передаём ваши данные третьим лицам, кроме случаев, предусмотренных законодательством РФ, а также сервисам аналитики (Яндекс.Метрика) в объёме, необходимом для их работы.</p>
+
+        <h3>5. Хранение и защита</h3>
+        <p>Данные хранятся не дольше, чем это нужно для достижения целей обработки, и защищаются организационными и техническими мерами от неправомерного доступа.</p>
+
+        <h3>6. Файлы cookie</h3>
+        <p>Cookie помогают Сайту работать корректно и позволяют анализировать посещаемость. «Яндекс.Метрика» и встроенная карта «Яндекс.Карт» загружаются только после того, как вы нажмёте «Принять» в уведомлении о cookie. Свой выбор можно изменить в любой момент по ссылке «Настройки cookie» внизу страницы. Также вы можете отключить cookie в настройках браузера, но некоторые функции Сайта могут работать некорректно.</p>
+
+        <h3>7. Ваши права</h3>
+        <p>Вы вправе запросить информацию об обработке своих данных, их уточнение, блокирование или удаление, а также отозвать согласие на обработку, направив обращение на e-mail оператора.</p>
+
+        <h3>8. Изменения политики</h3>
+        <p>Актуальная редакция политики всегда размещена на Сайте. Продолжая пользоваться Сайтом, вы соглашаетесь с её условиями.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="modal-consent" aria-labelledby="consent-title">
+    <div class="modal__box">
+      <button class="modal__close" type="button" data-close aria-label="Закрыть">×</button>
+      <h2 id="consent-title">Согласие на обработку персональных данных</h2>
+      <div class="modal__body">
+        <p>Я, действуя свободно, своей волей и в своём интересе, в соответствии со ст. 9 Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» даю согласие оператору — [ФИО / наименование ИП или ООО], ИНН [____], адрес: Орловская область, пгт Знаменка, ул. Советская, 115В (далее — Оператор), на обработку моих персональных данных на следующих условиях.</p>
+
+        <h3>Перечень данных</h3>
+        <p>Имя, номер телефона, имя пользователя в мессенджере, сведения об автомобиле, а также технические данные, передаваемые браузером (IP-адрес, cookie, сведения об устройстве).</p>
+
+        <h3>Цели обработки</h3>
+        <p>Обратная связь по моему обращению, консультации, запись на диагностику и ремонт, улучшение работы сайта и аналитика.</p>
+
+        <h3>Действия с данными</h3>
+        <p>Сбор, запись, систематизация, накопление, хранение, уточнение, использование, обезличивание, блокирование, удаление и уничтожение — с использованием средств автоматизации и без них.</p>
+
+        <h3>Срок и отзыв согласия</h3>
+        <p>Согласие действует до достижения целей обработки либо до его отзыва. Я могу отозвать согласие, направив письменное уведомление Оператору на e-mail [e-mail]. Оператор прекращает обработку данных в срок, установленный законодательством РФ.</p>
+
+        <p>Обращаясь к Оператору по контактам, указанным на сайте, я подтверждаю, что ознакомился с <button type="button" class="link-btn" data-modal="modal-privacy">Политикой конфиденциальности</button> и согласен с её условиями.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ====================== УВЕДОМЛЕНИЕ О COOKIE ====================== -->
+  <div class="cookie" id="cookie" hidden role="dialog" aria-label="Использование cookie">
+    <p>Мы используем cookie и «Яндекс.Метрику», чтобы улучшать сайт.
+       Подробнее — в <button type="button" class="link-btn" data-modal="modal-privacy">политике конфиденциальности</button>.</p>
+    <div class="cookie__actions">
+      <button class="btn btn--small" type="button" id="cookie-accept">Принять</button>
+      <button class="btn btn--small btn--ghost" type="button" id="cookie-decline">Отклонить</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
